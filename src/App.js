@@ -1,13 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import Game from './Components/Game/Game';
-
+import UserInput from './Components/UserInput/UserInput'
+import UserOutput from './Components/UserOutput/UserOutput'
 function App() {
+
+  const [name, changeName] = useState("max")
+
+  const handleNameChange = (event) => {
+    changeName(event.target.value)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-      <Game name ="Counting">I am the GAME of </Game>
-      </header>
+    <div className = "App">
+
+      <UserInput onChange = {handleNameChange} currentName = {name}></UserInput>
+      <UserOutput userName = {name}></UserOutput>
+
     </div>
   );
 }
