@@ -3,13 +3,18 @@ import "./UserOutput.css";
 
 function UserOutput(props) {
 
-    return(
-        <div className = "UserOutput">
+    let display = null
+
+    if (props.userName !== ""){
+        display = (
+            <div className = "UserOutput">
             <p>User Name: {props.userName}</p>
             <p>Paragraph 2</p>
-        </div>
-    )
-    
+            </div>
+        )
+    }
+
+    return display    
 }
 
 export default UserOutput

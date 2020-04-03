@@ -4,22 +4,27 @@ import UserInput from './Components/UserInput/UserInput'
 import UserOutput from './Components/UserOutput/UserOutput'
 function App() {
 
-  const [name, changeName] = useState("max")
+  const [name, changeName] = useState(["max","steve","paul"])
 
-  const handleNameChange = (event) => {
-    changeName(event.target.value)
-    
-  }
+  const handleNameChange = (event,index) => {
+    var temp = name.slice()
+    temp.splice(index,1,event.target.value)
+    changeName(temp) 
+  } 
 
   return (
     <div className = "App">
       
-      <UserInput onChange = {handleNameChange} currentName = {name}></UserInput>
-      {
-        name !== "" 
-        ? <UserOutput userName = {name} ></UserOutput> 
-        : null
+      {name.map((person, index) => {
+        return (
+          <div> 
+            <UserInput onChange = {handleNameChange} currentName = {person} index = {index}></UserInput>
+            <UserOutput userName = {person} ></UserOutput> 
+          </div>
+        )
+      })
       }
+
     </div>
   );
 }
