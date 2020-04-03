@@ -8,14 +8,18 @@ function App() {
 
   const handleNameChange = (event) => {
     changeName(event.target.value)
+    
   }
 
   return (
     <div className = "App">
-
+      
       <UserInput onChange = {handleNameChange} currentName = {name}></UserInput>
-      <UserOutput userName = {name}></UserOutput>
-
+      {
+        name !== "" 
+        ? <UserOutput userName = {name} ></UserOutput> 
+        : null
+      }
     </div>
   );
 }
