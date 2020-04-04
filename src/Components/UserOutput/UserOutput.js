@@ -5,11 +5,13 @@ function UserOutput(props) {
 
     let display = null
 
-    if (props.userName !== ""){
+    if (props.person.name !== ""){
         display = (
             <div className = "UserOutput">
-            <p>User Name: {props.userName}</p>
+                {console.log(props.person)}
+            <p >User Name: {props.person.name}</p>
             <p>Paragraph 2</p>
+            <button onClick = {props.onClick}>Click to Remove this element</button>
             </div>
         )
     }

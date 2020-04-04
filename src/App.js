@@ -4,22 +4,28 @@ import UserInput from './Components/UserInput/UserInput'
 import UserOutput from './Components/UserOutput/UserOutput'
 function App() {
 
-  const [name, changeName] = useState(["max","steve","paul"])
+  const [person, updatePerson] = useState([{id: "1asd", name: "max"}, {id: "2era", name: "steve"}, {id: "3met", name: "paul"}])
 
   const handleNameChange = (event,index) => {
-    var temp = name.slice()
-    temp.splice(index,1,event.target.value)
-    changeName(temp) 
+    let persons = [...person]
+    persons[index].name = event.target.value
+    updatePerson(persons) 
   } 
+
+  const handleRemovePerson = (index) => {
+    let persons = [...person]
+    persons.splice(index,1)
+    updatePerson(persons)
+  }
 
   return (
     <div className = "App">
       
-      {name.map((person, index) => {
+      {person.map((person, index) => {
         return (
-          <div> 
-            <UserInput onChange = {handleNameChange} currentName = {person} index = {index}></UserInput>
-            <UserOutput userName = {person} ></UserOutput> 
+          <div key = {person.id}> 
+            <UserInput onChange = {handleNameChange}  person = {person} index = {index}></UserInput>
+            <UserOutput person = {person} onClick = {() => handleRemovePerson(index)}></UserOutput> 
           </div>
         )
       })

@@ -10,10 +10,9 @@ function UserInput(props) {
     <input 
         type = "text"
         style = {inputStyle}
-        value= {props.currentName} 
+        value= {props.person.name} 
         onChange = {(event) => props.onChange(event, props.index)}
     >
-        
     </input>
     )
 }
